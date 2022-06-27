@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "npx nodemon server/index.js",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build"
+    "server-dev": "npx nodemon server/index.js"
   },
   "author": "Beth Johnson",
   "license": "ISC",
