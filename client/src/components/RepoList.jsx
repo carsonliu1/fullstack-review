@@ -1,10 +1,14 @@
 import React from 'react';
+import Repo from './Repo.jsx'
 
-const RepoList = (props) => (
-  <div>
-    <h4> Repo List Component </h4>
-    There are {props.repos.length} repos.
-  </div>
-)
+const RepoList = ({repos}) => {
+
+  return (
+    <div>
+      <h4> Repo List Component </h4>
+      {repos.map(obj => <Repo key={obj._id} repo={obj}/> )}
+    </div>
+  )
+}
 
 export default RepoList;

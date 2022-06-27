@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios'
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
@@ -7,15 +8,28 @@ import RepoList from './components/RepoList.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       repos: []
     }
+  }
 
+  componentDidMount() {
+    axios.get('http://localhost:3000/repos')
+      .then(res => this.setState({repos:res.data}))
+      .catch(error => alert(error))
   }
 
   search (term) {
-    console.log(`${term} was searched`);
-    // TODO
+    axios.post('http://localhost:3000/repos', {
+      user: term
+    })
+      .then(res => {
+        axios.get('http://localhost:3000/repos')
+          .then(res => this.setState({repos:res.data}))
+          .catch(error => alert(error))
+      })
+      .catch(err => alert(err))
+
   }
 
   render () {
