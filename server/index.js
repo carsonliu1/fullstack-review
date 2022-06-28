@@ -4,7 +4,7 @@ const dotenv = require('dotenv').config()
 const { getReposByUsername } = require('../helpers/github.js')
 const { save, top25 } = require('../database/index.js')
 let app = express();
-let port = process.env.PORT || 1128;
+let port = process.env.PORT ?? 1128;
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json())

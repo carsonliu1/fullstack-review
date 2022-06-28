@@ -3,11 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-    "node": "v16.15.0"
-  },
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node ./server/index.js",
     "react-dev": "webpack --mode development --watch",
     "server-dev": "npx nodemon server/index.js",
     "postinstall": "webpack --config ./webpack.config.js --progress"
