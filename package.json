@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node server/index.js",
     "react-dev": "webpack --mode development --watch",
-    "server-dev": "npx nodemon server/index.js"
+    "server-dev": "npx nodemon server/index.js",
+    "postinstall": "webpack --config ./webpack.config.js --progress"
   },
   "author": "Beth Johnson",
   "license": "ISC",
