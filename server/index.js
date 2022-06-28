@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path')
 const dotenv = require('dotenv').config()
 const { getReposByUsername } = require('../helpers/github.js')
 const { save, top25 } = require('../database/index.js')
@@ -9,7 +10,7 @@ app.use(express.json())
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(__dirname + '/../client/dist'));
-  // app.get('*', (req, res) => res.sendFile(path.resolve(__dirname + '/../' + 'client' + 'dist' + 'index.html')))
+  // app.get('*', (req, res) => res.sendFile(path.resolve(__dirname + '../' + 'client' + 'dist' + 'index.html')))
 }
 
 app.post('/repos', function (req, res) {
