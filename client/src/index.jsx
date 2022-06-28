@@ -14,17 +14,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/repos')
+    axios.get('http://localhost:5005/repos')
       .then(res => this.setState({repos:res.data}))
       .catch(error => alert(error))
   }
 
   search (term) {
-    axios.post('http://localhost:3000/repos', {
+    axios.post('http://localhost:5005/repos', {
       user: term
     })
       .then(res => {
-        axios.get('http://localhost:3000/repos')
+        axios.get('http://localhost:5005/repos')
           .then(res => this.setState({repos:res.data}))
           .catch(error => alert(error))
       })
