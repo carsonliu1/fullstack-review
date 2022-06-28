@@ -33,13 +33,14 @@ let save = (repoData, cb) => {
     obj.stars = repoData.data[x].stargazers_count
     data.push(obj)
   }
-  Repo.insertMany(data)
+  const result = Repo.insertMany(data)
+  // cb(null, result)
     .then(result => cb(null, data))
     .catch(err => cb(err))
 }
 
 let top25 = (cb) => {
-  Repo.find({}).sort({stars: -1}).limit(25)
+  const result = Repo.find({}).sort({stars: -1}).limit(25)
     .then(data => cb(null, data))
     .catch(err => cb(err))
 }

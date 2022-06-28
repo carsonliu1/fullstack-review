@@ -4,14 +4,14 @@ const dotenv = require('dotenv').config()
 const { getReposByUsername } = require('../helpers/github.js')
 const { save, top25 } = require('../database/index.js')
 let app = express();
+let port = process.env.PORT || 1128;
 
-// app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../client/dist'));
 app.use(express.json())
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(__dirname + '/../client/dist'));
-  app.get('*', (req, res) => res.sendFile(path.join(__dirname + '../client/dist/index.html')))
-}
+// if (process.env.NODE_ENV === 'production') {
+//   app.use(express.static(__dirname + '/../client/dist'));
+// }
 
 app.post('/repos', function (req, res) {
   // TODO - your code here!
@@ -31,8 +31,8 @@ app.post('/repos', function (req, res) {
       save(repos, (err, data) => {
         // console.log(data)
         if (err) {
-          res.status(400)
-          throw new Error('unable to save to database')
+          res.status(200)
+          res.end()
         } else {
           res.status(200).json(data)
         }
@@ -51,8 +51,6 @@ app.get('/repos', function (req, res) {
     }
   })
 });
-
-let port = process.env.PORT || 1128;
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

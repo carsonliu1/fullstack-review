@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "v16.15.0"
+  },
   "scripts": {
     "start": "node server/index.js",
     "react-dev": "webpack --mode development --watch",
@@ -26,6 +29,7 @@
     "jquery": "^3.1.1",
     "mongoose": "^5.10.15",
     "react": "^16.4",
-    "react-dom": "^16.4"
+    "react-dom": "^16.4",
+    "react-scripts": "^5.0.1"
   }
 }
